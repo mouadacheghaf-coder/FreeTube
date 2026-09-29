@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FreeTube</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0f0f0f;color:#fff}
+header{height:58px;background:#181818;display:flex;align-items:center;padding:0 18px;position:sticky;top:0;z-index:5;border-bottom:1px solid #292929}
+.logo{font-size:21px;font-weight:800;color:#ff3b30}.logo span{color:white}
+.search{margin:auto;display:flex;width:46%;max-width:560px}.search input{flex:1;background:#111;border:1px solid #444;color:#fff;padding:11px 14px;border-radius:22px 0 0 22px}.search button{border:1px solid #444;background:#303030;color:white;padding:0 18px;border-radius:0 22px 22px 0}
+main{max-width:1100px;margin:auto;padding:22px 18px 90px}.page{display:none}.page.active{display:block}
+h1{font-size:25px}.chips{display:flex;gap:9px;overflow:auto;margin-bottom:22px}.chip{background:#272727;border:0;color:white;padding:9px 15px;border-radius:18px;white-space:nowrap}.chip.active{background:white;color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}.card{cursor:pointer}.thumb{height:145px;border-radius:10px;background:linear-gradient(135deg,#242424,#555);display:flex;align-items:center;justify-content:center;font-size:42px;position:relative}.time{position:absolute;right:8px;bottom:8px;background:#000;padding:3px 6px;border-radius:4px;font-size:12px}.title{font-weight:700;margin-top:9px}.meta{color:#aaa;font-size:13px;margin-top:6px}
+.video{height:430px;background:linear-gradient(135deg,#111,#333);display:flex;align-items:center;justify-content:center;font-size:70px;border-radius:10px}.actions{display:flex;gap:10px;margin:15px 0}.btn{background:#292929;border:0;color:#fff;padding:10px 16px;border-radius:20px}.btn.red{background:#e52b20}.comment{background:#1b1b1b;padding:13px;border-radius:10px;margin:10px 0}.comment small{color:#aaa}
+.form{max-width:600px;background:#1a1a1a;padding:22px;border-radius:12px}.form input,.form textarea{width:100%;margin:8px 0 14px;background:#101010;color:white;border:1px solid #444;padding:12px;border-radius:7px}.form textarea{height:100px}
+.profile{display:flex;gap:18px;align-items:center;margin-bottom:25px}.avatar{width:80px;height:80px;border-radius:50%;background:#555;display:flex;align-items:center;justify-content:center;font-size:30px}
+.message{background:#1d1d1d;padding:15px;border-radius:12px;margin:10px 0}.bottom{position:fixed;bottom:0;left:0;right:0;height:64px;background:#181818;border-top:1px solid #333;display:flex;justify-content:center;gap:55px;align-items:center}.bottom button{background:none;border:0;color:#ddd;font-size:12px}.bottom b{display:block;font-size:20px;margin-bottom:2px}
+@media(max-width:600px){.search{width:45%}.video{height:250px}.bottom{gap:25px}}
+</style>
+</head>
+<body>
+<header><div class="logo">Free<span>Tube</span></div><div class="search"><input placeholder="Search videos..."><button>🔍</button></div></header>
+<main>
+<section id="home" class="page active"><h1>Home</h1>
+<div class="chips"><button class="chip active">All</button><button class="chip">Music</button><button class="chip">Gaming</button><button class="chip">Sports</button><button class="chip">News</button><button class="chip">Comedy</button></div>
+<div class="grid">
+<div class="card" onclick="show('watch')"><div class="thumb">▶<span class="time">8:42</span></div><div class="title">Welcome to FreeTube — our first video</div><div class="meta">FreeTube Official · 12K views · 2 days ago</div></div>
+<div class="card" onclick="show('watch')"><div class="thumb">🎵<span class="time">4:16</span></div><div class="title">My New Music Video</div><div class="meta">Jay Music · 8.4K views · 5 hours ago</div></div>
+<div class="card" onclick="show('watch')"><div class="thumb">🎮<span class="time">12:05</span></div><div class="title">Gaming With The Crew</div><div class="meta">GameZone · 3.1K views · 1 day ago</div></div>
+<div class="card" onclick="show('watch')"><div class="thumb">⚽<span class="time">6:31</span></div><div class="title">Amazing Goals of the Week</div><div class="meta">Football Hub · 21K views · 3 days ago</div></div>
+</div></section>
+<section id="watch" class="page"><button class="btn" onclick="show('home')">← Back</button><div class="video">▶</div><h1>Welcome to FreeTube — our first video</h1><div class="meta">FreeTube Official · 12,000 views</div><div class="actions"><button class="btn">👍 1.2K</button><button class="btn">💬 84</button><button class="btn">↗ Share</button><button class="btn">＋ Follow</button></div><p>This is the FreeTube video page. Users will be able to watch, like, comment, share and follow creators.</p><h2>Comments</h2><div class="comment"><b>Sarah</b><br>Great idea for an app!<br><small>2 hours ago</small></div><div class="comment"><b>Mike</b><br>Looking forward to using this.<br><small>5 hours ago</small></div></section>
+<section id="upload" class="page"><h1>Upload a video</h1><div class="form"><label>Choose video</label><input type="file" accept="video/*"><label>Title</label><input placeholder="Give your video a title"><label>Description</label><textarea placeholder="Tell people about your video"></textarea><label>Thumbnail</label><input type="file" accept="image/*"><button class="btn red" onclick="alert('Upload is ready for backend integration.')">Publish Video</button></div></section>
+<section id="messages" class="page"><h1>Messages</h1><div class="message"><b>Sarah</b><br>Hey! Did you see the new video?<br><small>10:42 AM</small></div><div class="message"><b>Mike</b><br>Thanks for following me 👍<br><small>Yesterday</small></div><div class="form"><input placeholder="Write a message..."><button class="btn red">Send</button></div></section>
+<section id="profile" class="page"><div class="profile"><div class="avatar">M</div><div><h1 style="margin:0">My Profile</h1><div class="meta">@mychannel · 126 followers</div></div></div><button class="btn red" onclick="show('upload')">＋ Upload Video</button><h2>My Videos</h2><div class="grid"><div class="card"><div class="thumb">▶</div><div class="title">My first upload</div><div class="meta">245 views</div></div></div></section>
+</main>
+<nav class="bottom"><button onclick="show('home')"><b>⌂</b>Home</button><button onclick="show('upload')"><b>＋</b>Upload</button><button onclick="show('messages')"><b>💬</b>Messages</button><button onclick="show('profile')"><b>●</b>Profile</button></nav>
+<script>function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0)}</script>
+</body></html>
